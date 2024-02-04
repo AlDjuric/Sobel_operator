@@ -1,6 +1,7 @@
 #include "config.h"
 #include "sobel_filter.h"
 
+
 int main()
 {
 	float image[HEIGHT][WIDTH] = {
@@ -20,7 +21,9 @@ int main()
 
 	sobel_filter(image, memory_tb);
 
+
 	int errors = 0;
+
 	for(int i = 0; i < (HEIGHT - 2) * (WIDTH - 2); ++i)
 	{
 		float expected = expected_result[i];

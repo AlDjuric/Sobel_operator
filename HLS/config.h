@@ -17,7 +17,6 @@
 #include "HLS/ac_fixed.h"
 #include "HLS/ac_fixed_math.h"
 #include "HLS/Math.h"
-
 #include "stdio.h"
 
 // defines
@@ -25,6 +24,7 @@
 #define WIDTH  5
 
 // typedefs
+
 typedef ac_fixed<8, 4, false> fixed_8_4_f;
 
 // constants
