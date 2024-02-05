@@ -3,7 +3,6 @@
 
 #include "config.h"
 
-component void
-	sobel_filter(float sample[HEIGHT][WIDTH], float result[(HEIGHT - 2) * (WIDTH - 2)]);
-
+hls_avalon_slave_component component void
+	sobel_filter(float image[HEIGHT][WIDTH], float result[(HEIGHT - 2) * (WIDTH - 2)]);
 #endif

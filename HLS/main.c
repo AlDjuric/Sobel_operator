@@ -1,6 +1,6 @@
 #include "config.h"
 #include "sobel_filter.h"
-
+// Helper function to calculate square root using sqrt_fixed and convert the result
 
 int main()
 {
@@ -17,13 +17,20 @@ int main()
 		212.13203436, 200.00000000, 212.13203436, 200.00000000, 0.00000000,
 		200.00000000, 212.13203436, 200.00000000, 212.13203436};
 
-	float memory_tb[(HEIGHT - 2) * (WIDTH - 2)];
+	float memory_tb[WIDTH * HEIGHT];
+
+	// load testbench-memory with original image
+	for(int i = 0; i < HEIGHT; ++i)
+	{
+		for(int j = 0; j < WIDTH; ++j)
+		{
+			memory_tb[i * WIDTH + j] = image[i][j];
+		}
+	}
 
 	sobel_filter(image, memory_tb);
 
-
 	int errors = 0;
-
 	for(int i = 0; i < (HEIGHT - 2) * (WIDTH - 2); ++i)
 	{
 		float expected = expected_result[i];

@@ -1,8 +1,8 @@
 @echo off
 
-set "SOURCE_FILES=main.c sobel_filter.c "
+set "SOURCE_FILES=main.c sobel_filter.c  "
 set "FPGA_OUTPUT_NAME=ver_1"
-set "FPGA_FLAGS= --quartus-compile --clock 50MHz --fp-relaxed --fpc"
+set "FPGA_FLAGS= --quartus-compile --clock 50MHz --fp-relaxed "
 
 
 if not "%1"=="" (
