@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "*.json": "jsonc",
+        "*.cpp": "cpp",
+        "*.c": "c",
+        "istream": "c",
+        "sobel_filter.h": "c",
+        "xlocale": "c"
+    }
+}

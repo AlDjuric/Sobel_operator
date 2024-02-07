@@ -83,6 +83,13 @@ int main()
 
 	for(int i = 0; i < SAMPLE_SIZE; ++i)
 	{
+		ihc_hls_enqueue_noret(
+			&sobel_filter, sobel_in, sobel_out); // Call the sobel_filter
+	}
+	ihc_hls_component_run_all(sobel_filter);     // Wait for the sobel_filter to finish
+
+	for(int i = 0; i < SAMPLE_SIZE; ++i)
+	{
 		sobel_output[i] = sobel_out.read(); // read the output array
 	}
 
@@ -93,6 +100,8 @@ int main()
 	{
 		result_in.write(sobel_output[i]); // Populate the input stream
 	}
+	ihc_hls_enqueue_noret(&result_buffer, results, result_in); // Call the result_buffer
+	ihc_hls_component_run_all(result_buffer); // Wait for the result_buffer to finish
 
 	// call verify function
 	sobel_filter_tb(image_data, results_tb);
