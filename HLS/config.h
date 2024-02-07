@@ -16,7 +16,7 @@
 //**********************//
 #include "HLS/hls.h"
 #include "HLS/ac_fixed.h"
-// #include "HLS/ac_fixed_math.h"
+#include "HLS/ac_fixed_math.h"
 #include "HLS/Math.h"
 #include "stdio.h"
 
@@ -25,6 +25,8 @@
 //**********************//
 #define HEIGHT 5
 #define WIDTH  5
+
+#define SAMPLE_SIZE 25
 
 #define N      110
 
