@@ -2,8 +2,8 @@
 #include "sobel_filter.h"
 #include "sample_buffer.h"
 #include "result_buffer.h"
-// Helper function to calculate square root using sqrt_fixed and convert the result
-// Sobel filter implementation
+
+// Sobel filter testbench function
 void sobel_filter_tb(float* image, float* result)
 {
 	for(int i = 1; i < HEIGHT - 1; ++i)
@@ -68,14 +68,25 @@ int main()
 	ihc::stream_out<f_19_5_t> sobel_out;
 	ihc::stream_out<f_19_5_t> result_out;
 
-	// sample_buffer
+	// Call the components
+
+	//**************************************************//
+	// Sample buffer
+	//**************************************************//
+
 	sample_buffer(image_data, sample_out);
 	for(int i = 0; i < SAMPLE_SIZE; ++i)
 	{
 		sample_output[i] = sample_out.read(); // Populate the output array
 	}
+	//**************************************************//
+	// Sample end
+	//**************************************************//
 
+	//**************************************************//
 	// Sobel filter
+	//**************************************************//
+
 	for(int i = 0; i < SAMPLE_SIZE; ++i)
 	{
 		sobel_in.write(sample_output[i]); // Populate the input stream
@@ -92,19 +103,29 @@ int main()
 	{
 		sobel_output[i] = sobel_out.read(); // read the output array
 	}
-
+	//**************************************************//
 	// Sobel end
+	//**************************************************//
 
+	//**************************************************//
 	// result_buffer
+	//**************************************************//
 	for(int i = 0; i < SAMPLE_SIZE; ++i)
 	{
 		result_in.write(sobel_output[i]); // Populate the input stream
 	}
 	ihc_hls_enqueue_noret(&result_buffer, results, result_in); // Call the result_buffer
 	ihc_hls_component_run_all(result_buffer); // Wait for the result_buffer to finish
+	//**************************************************//
+	// result end
+	//**************************************************//
 
 	// call verify function
 	sobel_filter_tb(image_data, results_tb);
+
+	//**************************************************//
+	// Verify the results
+	//**************************************************//
 
 	int errors      = 0;
 	float tolerance = 0.001; // Adjust the tolerance value as needed
