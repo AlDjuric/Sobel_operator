@@ -16,11 +16,11 @@ This project presents an implementation of the Sobel filter using High-Level Syn
 ## Features
 
 - Sobel edge detection algorithm implemented in HLS.
-- Support for various image sizes (modifiable parameters).
+- Efficient resource utilization.
 
 ---
 
-## Planned Enhancements
+## Planned Features
 
 - **Real-Time Image Processing**: Future versions will aim to process images in real-time, allowing for dynamic edge detection in video streams or high-speed camera inputs.
 - **Performance Optimization**: We plan to refine the algorithm and its implementation to ensure higher performance, focusing on faster processing times and reduced resource consumption on FPGA devices.
@@ -31,7 +31,7 @@ This project presents an implementation of the Sobel filter using High-Level Syn
 
 ## Requirements
 
-- Intel Quartus HLS.
+- Intel Quartus HLS (current version runs on Quartus 18.1, you will need to install Visual studio 2010 for toolchain).
 - A suitable FPGA board for deployment (optional for simulation purposes).
 - Basic understanding of HLS and edge detection algorithms.
 
